@@ -1,0 +1,138 @@
+<!-- Template untuk halaman transaksi -->
+<div class="transactions-container">
+  <div class="page-header">
+    <h1>Kelola Transaksi</h1>
+    <button class="btn-primary add-transaction-btn">
+      <i class="icon-plus"></i>
+      Tambah Transaksi
+    </button>
+  </div>
+  
+  <div class="filter-section">
+    <div class="filter-group">
+      <label for="filter-type">Jenis</label>
+      <select id="filter-type">
+        <option value="all">Semua</option>
+        <option value="income">Pemasukan</option>
+        <option value="expense">Pengeluaran</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label for="filter-category">Kategori</label>
+      <select id="filter-category">
+        <option value="all">Semua Kategori</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label for="filter-account">Akun</label>
+      <select id="filter-account">
+        <option value="all">Semua Akun</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label for="filter-date">Periode</label>
+      <select id="filter-date">
+        <option value="this-month">Bulan Ini</option>
+        <option value="last-month">Bulan Lalu</option>
+        <option value="this-year">Tahun Ini</option>
+        <option value="custom">Kustom</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="transactions-summary">
+    <div class="summary-item">
+      <span class="summary-label">Total Pemasukan:</span>
+      <span class="summary-value income" id="filtered-income">Rp 0</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Total Pengeluaran:</span>
+      <span class="summary-value expense" id="filtered-expense">Rp 0</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Selisih:</span>
+      <span class="summary-value" id="filtered-balance">Rp 0</span>
+    </div>
+  </div>
+  
+  <div class="transactions-table-container">
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th>Tanggal</th>
+          <th>Deskripsi</th>
+          <th>Kategori</th>
+          <th>Akun</th>
+          <th>Jumlah</th>
+          <th>Oleh</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="transactions-table-body">
+        <!-- Transaction rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal untuk tambah/edit transaksi -->
+<div class="modal" id="transaction-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="transaction-modal-title">Tambah Transaksi</h2>
+      <button class="modal-close" id="close-transaction-modal">&times;</button>
+    </div>
+    
+    <form class="transaction-form" id="transaction-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="transaction-type">Jenis Transaksi</label>
+          <select id="transaction-type" required>
+            <option value="">Pilih jenis</option>
+            <option value="income">Pemasukan</option>
+            <option value="expense">Pengeluaran</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="transaction-amount">Jumlah</label>
+          <input type="number" id="transaction-amount" placeholder="0" min="0" step="1000" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="transaction-category">Kategori</label>
+          <select id="transaction-category" required>
+            <option value="">Pilih kategori</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="transaction-account">Akun</label>
+          <select id="transaction-account" required>
+            <option value="">Pilih akun</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="transaction-date">Tanggal</label>
+        <input type="date" id="transaction-date" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="transaction-description">Deskripsi</label>
+        <textarea id="transaction-description" placeholder="Deskripsi transaksi (opsional)" rows="3"></textarea>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" id="cancel-transaction">Batal</button>
+        <button type="submit" class="btn-primary">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>

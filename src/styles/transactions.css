@@ -1,0 +1,138 @@
+/* Transactions Styles */
+.transactions-container {
+  @apply space-y-6;
+}
+
+.page-header {
+  @apply flex items-center justify-between mb-6;
+}
+
+.page-header h1 {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.add-transaction-btn {
+  @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2;
+}
+
+.filter-section {
+  @apply bg-white rounded-xl shadow-sm p-6 mb-6 grid grid-cols-1 md:grid-cols-4 gap-4;
+}
+
+.filter-group {
+  @apply space-y-2;
+}
+
+.filter-group label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.filter-group select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.transactions-summary {
+  @apply bg-white rounded-xl shadow-sm p-6 mb-6 grid grid-cols-1 md:grid-cols-3 gap-4;
+}
+
+.summary-item {
+  @apply flex justify-between items-center;
+}
+
+.summary-label {
+  @apply text-gray-600 font-medium;
+}
+
+.summary-value {
+  @apply font-bold text-lg;
+}
+
+.summary-value.income {
+  @apply text-green-600;
+}
+
+.summary-value.expense {
+  @apply text-red-600;
+}
+
+.transactions-table-container {
+  @apply bg-white rounded-xl shadow-sm overflow-hidden;
+}
+
+.transactions-table {
+  @apply w-full;
+}
+
+.transactions-table th {
+  @apply bg-gray-50 px-6 py-4 text-left text-sm font-medium text-gray-700 border-b border-gray-200;
+}
+
+.transactions-table td {
+  @apply px-6 py-4 text-sm text-gray-900 border-b border-gray-100;
+}
+
+.transactions-table tbody tr:hover {
+  @apply bg-gray-50;
+}
+
+/* Transaction Form Modal */
+.modal {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden;
+}
+
+.modal.show {
+  @apply block;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.modal-content {
+  @apply bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto;
+}
+
+.modal-header {
+  @apply flex items-center justify-between p-6 border-b border-gray-200;
+}
+
+.modal-header h2 {
+  @apply text-xl font-semibold text-gray-900;
+}
+
+.modal-close {
+  @apply text-gray-400 hover:text-gray-600 text-2xl font-bold cursor-pointer;
+}
+
+.transaction-form {
+  @apply p-6 space-y-6;
+}
+
+.form-row {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.form-group {
+  @apply space-y-2;
+}
+
+.form-group label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.form-actions {
+  @apply flex justify-end space-x-4 pt-4 border-t border-gray-200;
+}
+
+.btn-secondary {
+  @apply px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors;
+}
+
+.btn-primary {
+  @apply px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors;
+}

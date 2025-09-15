@@ -1,0 +1,147 @@
+<!-- Template untuk halaman akun dan kategori -->
+<div class="accounts-container">
+  <div class="page-header">
+    <h1>Kelola Akun & Kategori</h1>
+    <p>Atur akun dan kategori untuk mengorganisir transaksi keluarga</p>
+  </div>
+  
+  <div class="accounts-content">
+    <!-- Accounts Section -->
+    <div class="accounts-section">
+      <div class="section-header">
+        <h2>Akun</h2>
+        <button class="btn-primary" id="add-account-btn">
+          <i class="icon-plus"></i>
+          Tambah Akun
+        </button>
+      </div>
+      
+      <div class="accounts-grid" id="accounts-grid">
+        <!-- Account cards will be inserted here -->
+      </div>
+    </div>
+    
+    <!-- Categories Section -->
+    <div class="categories-section">
+      <div class="section-header">
+        <h2>Kategori</h2>
+        <button class="btn-primary" id="add-category-btn">
+          <i class="icon-plus"></i>
+          Tambah Kategori
+        </button>
+      </div>
+      
+      <div class="category-tabs">
+        <button class="tab-btn active" data-type="income">Pemasukan</button>
+        <button class="tab-btn" data-type="expense">Pengeluaran</button>
+      </div>
+      
+      <div class="categories-grid" id="categories-grid">
+        <!-- Category cards will be inserted here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal untuk tambah/edit akun -->
+<div class="modal" id="account-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="account-modal-title">Tambah Akun</h2>
+      <button class="modal-close" id="close-account-modal">&times;</button>
+    </div>
+    
+    <form class="account-form" id="account-form">
+      <div class="form-group">
+        <label for="account-name">Nama Akun</label>
+        <input type="text" id="account-name" placeholder="Contoh: Bank Mandiri, Dompet, dll." required>
+      </div>
+      
+      <div class="form-group">
+        <label for="account-type">Jenis Akun</label>
+        <select id="account-type" required>
+          <option value="">Pilih jenis akun</option>
+          <option value="cash">Tunai</option>
+          <option value="bank">Bank</option>
+          <option value="credit">Kartu Kredit</option>
+          <option value="investment">Investasi</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="account-balance">Saldo Awal</label>
+        <input type="number" id="account-balance" placeholder="0" min="0" step="1000" required>
+        <small class="form-text">Masukkan saldo awal akun ini</small>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" id="cancel-account">Batal</button>
+        <button type="submit" class="btn-primary">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal untuk tambah/edit kategori -->
+<div class="modal" id="category-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="category-modal-title">Tambah Kategori</h2>
+      <button class="modal-close" id="close-category-modal">&times;</button>
+    </div>
+    
+    <form class="category-form" id="category-form">
+      <div class="form-group">
+        <label for="category-name">Nama Kategori</label>
+        <input type="text" id="category-name" placeholder="Contoh: Makanan, Gaji, dll." required>
+      </div>
+      
+      <div class="form-group">
+        <label for="category-type">Jenis Kategori</label>
+        <select id="category-type" required>
+          <option value="">Pilih jenis kategori</option>
+          <option value="income">Pemasukan</option>
+          <option value="expense">Pengeluaran</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="category-icon">Icon</label>
+        <select id="category-icon">
+          <option value="dollar-sign">💰 Dollar</option>
+          <option value="coffee">☕ Makanan & Minuman</option>
+          <option value="car">🚗 Transportasi</option>
+          <option value="home">🏠 Rumah</option>
+          <option value="shopping-bag">🛍️ Belanja</option>
+          <option value="heart">❤️ Kesehatan</option>
+          <option value="smile">😊 Hiburan</option>
+          <option value="book">📚 Pendidikan</option>
+          <option value="briefcase">💼 Pekerjaan</option>
+          <option value="gift">🎁 Hadiah</option>
+          <option value="trending-up">📈 Investasi</option>
+          <option value="file-text">📄 Tagihan</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="category-color">Warna</label>
+        <div class="color-picker" id="color-picker">
+          <div class="color-option" data-color="#10B981" style="background-color: #10B981;"></div>
+          <div class="color-option" data-color="#3B82F6" style="background-color: #3B82F6;"></div>
+          <div class="color-option" data-color="#EF4444" style="background-color: #EF4444;"></div>
+          <div class="color-option" data-color="#F59E0B" style="background-color: #F59E0B;"></div>
+          <div class="color-option" data-color="#8B5CF6" style="background-color: #8B5CF6;"></div>
+          <div class="color-option" data-color="#EC4899" style="background-color: #EC4899;"></div>
+          <div class="color-option" data-color="#6B7280" style="background-color: #6B7280;"></div>
+          <div class="color-option" data-color="#059669" style="background-color: #059669;"></div>
+        </div>
+        <input type="hidden" id="category-color" value="#6B7280">
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" id="cancel-category">Batal</button>
+        <button type="submit" class="btn-primary">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
