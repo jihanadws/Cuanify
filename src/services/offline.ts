@@ -76,9 +76,24 @@ export class OfflineStorageService {
       // Clear existing transactions for this family
       await this.db.transactions.where('family_id').equals(familyId).delete()
       
+      // Serialize transactions to prevent DataCloneError
+      const serializedTransactions = transactions.map(transaction => ({
+        id: transaction.id,
+        family_id: transaction.family_id,
+        account_id: transaction.account_id,
+        category_id: transaction.category_id,
+        type: transaction.type,
+        amount: transaction.amount,
+        description: transaction.description,
+        date: transaction.date,
+        created_by: transaction.created_by,
+        created_at: transaction.created_at,
+        updated_at: transaction.updated_at
+      }))
+      
       // Add new transactions
-      await this.db.transactions.bulkAdd(transactions)
-      console.log(`Cached ${transactions.length} transactions for offline access`)
+      await this.db.transactions.bulkAdd(serializedTransactions)
+      console.log(`Cached ${serializedTransactions.length} transactions for offline access`)
     } catch (error) {
       console.error('Error caching transactions:', error)
     }
@@ -87,8 +102,21 @@ export class OfflineStorageService {
   async cacheAccounts(familyId: string, accounts: Account[]): Promise<void> {
     try {
       await this.db.accounts.where('family_id').equals(familyId).delete()
-      await this.db.accounts.bulkAdd(accounts)
-      console.log(`Cached ${accounts.length} accounts for offline access`)
+      
+      // Serialize accounts to prevent DataCloneError
+      const serializedAccounts = accounts.map(account => ({
+        id: account.id,
+        name: account.name,
+        type: account.type,
+        balance: account.balance,
+        family_id: account.family_id,
+        created_by: account.created_by,
+        created_at: account.created_at,
+        updated_at: account.updated_at
+      }))
+      
+      await this.db.accounts.bulkAdd(serializedAccounts)
+      console.log(`Cached ${serializedAccounts.length} accounts for offline access`)
     } catch (error) {
       console.error('Error caching accounts:', error)
     }
@@ -97,8 +125,22 @@ export class OfflineStorageService {
   async cacheCategories(familyId: string, categories: Category[]): Promise<void> {
     try {
       await this.db.categories.where('family_id').equals(familyId).delete()
-      await this.db.categories.bulkAdd(categories)
-      console.log(`Cached ${categories.length} categories for offline access`)
+      
+      // Serialize categories to prevent DataCloneError
+      const serializedCategories = categories.map(category => ({
+        id: category.id,
+        name: category.name,
+        type: category.type,
+        icon: category.icon,
+        color: category.color,
+        family_id: category.family_id,
+        created_by: category.created_by,
+        created_at: category.created_at,
+        updated_at: category.updated_at
+      }))
+      
+      await this.db.categories.bulkAdd(serializedCategories)
+      console.log(`Cached ${serializedCategories.length} categories for offline access`)
     } catch (error) {
       console.error('Error caching categories:', error)
     }
@@ -139,7 +181,7 @@ export class OfflineStorageService {
     transactionData: Partial<Transaction>
   ): Promise<string> {
     try {
-      const offlineId = `offline_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      const offlineId = `offline_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`
       
       const transaction: Transaction = {
         id: offlineId,
@@ -155,14 +197,29 @@ export class OfflineStorageService {
         updated_at: new Date().toISOString()
       }
 
+      // Serialize transaction before adding to prevent DataCloneError
+      const serializedTransaction = {
+        id: transaction.id,
+        family_id: transaction.family_id,
+        account_id: transaction.account_id,
+        category_id: transaction.category_id,
+        type: transaction.type,
+        amount: transaction.amount,
+        description: transaction.description,
+        date: transaction.date,
+        created_by: transaction.created_by,
+        created_at: transaction.created_at,
+        updated_at: transaction.updated_at
+      }
+
       // Add to offline transactions table
-      await this.db.transactions.add(transaction)
+      await this.db.transactions.add(serializedTransaction)
 
       // Add to sync queue
       await this.db.syncQueue.add({
         type: 'transaction',
         action: 'create',
-        data: transaction,
+        data: serializedTransaction,
         timestamp: Date.now(),
         synced: false
       })
@@ -241,7 +298,7 @@ export class OfflineStorageService {
       })
 
       // If this was a create action, update the local record with server ID
-      if (serverData && serverData.id) {
+      if (serverData?.id) {
         const syncItem = await this.db.syncQueue.get(syncId)
         if (syncItem && syncItem.action === 'create' && syncItem.type === 'transaction') {
           // Update local transaction with server ID

@@ -190,6 +190,20 @@ export const useTransactionStore = defineStore('transaction', () => {
       if (navigator.onLine) {
         const response = await transactionService.getCategories(familyId, type)
         
+        console.log('Categories API response:', {
+          familyId,
+          type,
+          responseError: response.error,
+          dataLength: response.data?.length || 0,
+          allCategoriesDetailed: response.data?.map(cat => ({
+            id: cat.id,
+            name: cat.name,
+            type: cat.type,
+            family_id: cat.family_id,
+            created_by: cat.created_by
+          }))
+        })
+        
         if (response.error) {
           error.value = response.error
           const cached = await offlineStorageService.getCachedCategories(familyId)
@@ -203,6 +217,12 @@ export const useTransactionStore = defineStore('transaction', () => {
         } else {
           categories.value = response.data || []
         }
+        
+        console.log('Categories loaded successfully:', {
+          totalCategories: categories.value.length,
+          incomeCount: categories.value.filter(cat => cat.type === 'income').length,
+          expenseCount: categories.value.filter(cat => cat.type === 'expense').length
+        })
         
         await offlineStorageService.cacheCategories(familyId, categories.value)
         return true

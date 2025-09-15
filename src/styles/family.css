@@ -1,158 +1,241 @@
-/* Family Management Styles */
+/* family.css - Custom style for Family Management Page */
+
 .family-container {
-  @apply space-y-6;
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  padding: 2rem 2rem 2.5rem 2rem;
 }
 
 .page-header {
-  @apply flex items-center justify-between mb-6 p-6 bg-white rounded-xl shadow-sm;
-}
-
-.page-header h1 {
-  @apply text-3xl font-bold text-gray-900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .family-code-section {
-  @apply flex items-center space-x-4;
-}
-
-.family-code-section p {
-  @apply text-gray-700;
-}
-
-.family-code-section strong {
-  @apply font-mono text-lg bg-gray-100 px-3 py-1 rounded;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
 }
 
 .copy-code-btn {
-  @apply px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors;
+  background: #e0e7ef;
+  color: #1e293b;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.3rem 1.1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.copy-code-btn:hover {
+  background: #cbd5e1;
 }
 
 .family-content {
-  @apply grid grid-cols-1 lg:grid-cols-2 gap-6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.family-members-section,
-.join-family-section {
-  @apply bg-white rounded-xl shadow-sm p-6;
+.family-members-section, .join-family-section {
+  flex: 1 1 300px;
+  background: #f9fafb;
+  border-radius: 0.7rem;
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.03);
 }
 
 .section-header {
-  @apply flex items-center justify-between mb-6;
-}
-
-.section-header h2 {
-  @apply text-xl font-semibold text-gray-900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .members-list {
-  @apply space-y-4;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
 }
-
 .member-item {
-  @apply flex items-center justify-between p-4 border border-gray-200 rounded-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  font-size: 1rem;
+}
+.member-item .role {
+  font-size: 0.95em;
+  color: #64748b;
+  margin-left: 0.7em;
 }
 
-.member-info {
-  @apply flex items-center space-x-3;
+#invite-member-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.4rem 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#invite-member-btn:hover {
+  background: #1d4ed8;
 }
 
-.member-avatar {
-  @apply w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center;
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(30,41,59,0.18);
+  justify-content: center;
+  align-items: center;
 }
-
-.member-details h3 {
-  @apply font-medium text-gray-900;
+.modal.show {
+  display: flex;
 }
-
-.member-details p {
-  @apply text-sm text-gray-600;
+.modal-content {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem 2.2rem 1.5rem 2.2rem;
+  min-width: 320px;
+  max-width: 95vw;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+  position: relative;
+  animation: modalIn 0.18s cubic-bezier(.4,1.4,.6,1) 1;
 }
-
-.member-role {
-  @apply px-3 py-1 text-xs font-medium rounded-full;
+@keyframes modalIn {
+  from { transform: translateY(40px) scale(0.98); opacity: 0; }
+  to { transform: none; opacity: 1; }
 }
-
-.member-role.owner {
-  @apply bg-blue-100 text-blue-800;
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
 }
-
-.member-role.member {
-  @apply bg-gray-100 text-gray-800;
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #64748b;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.2em;
+  transition: color 0.2s;
 }
-
-.join-family-section h2 {
-  @apply text-xl font-semibold text-gray-900 mb-4;
+.modal-close:hover {
+  color: #ef4444;
 }
-
-.join-family-section p {
-  @apply text-gray-600 mb-6;
-}
-
-.join-family-form {
-  @apply space-y-4;
-}
-
-.form-group {
-  @apply space-y-2;
-}
-
-.form-group label {
-  @apply block text-sm font-medium text-gray-700;
-}
-
-.form-group input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-}
-
-/* Invite Modal */
 .invite-content {
-  @apply p-6 space-y-6;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
-
 .family-code-display {
-  @apply flex items-center space-x-2 p-4 bg-gray-50 rounded-lg;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
-
-.family-code-display input {
-  @apply flex-1 bg-transparent border-none outline-none font-mono text-lg;
+#invite-family-code {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  background: #f1f5f9;
+  width: 170px;
+  text-align: center;
 }
-
-.share-options h3 {
-  @apply text-lg font-medium text-gray-900 mb-4;
+#copy-invite-code {
+  background: #e0e7ef;
+  color: #1e293b;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.3rem 1.1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
 }
-
+#copy-invite-code:hover {
+  background: #cbd5e1;
+}
+.share-options {
+  margin-top: 0.5rem;
+}
 .share-buttons {
-  @apply grid grid-cols-3 gap-4;
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.3rem;
 }
-
 .share-btn {
-  @apply flex flex-col items-center space-y-2 p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: #f1f5f9;
+  color: #2563eb;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.3rem 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
 }
-
-.share-btn.whatsapp-btn:hover {
-  @apply border-green-400 bg-green-50;
+.share-btn:hover {
+  background: #dbeafe;
+  color: #1d4ed8;
 }
-
-.share-btn.email-btn:hover {
-  @apply border-yellow-400 bg-yellow-50;
-}
-
-.share-btn i {
-  @apply w-6 h-6;
-}
-
 .invite-instructions {
-  @apply bg-blue-50 p-4 rounded-lg;
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.98em;
+  color: #334155;
 }
-
-.invite-instructions h3 {
-  @apply text-lg font-medium text-blue-900 mb-3;
-}
-
 .invite-instructions ol {
-  @apply space-y-2 text-blue-800;
+  margin: 0.5em 0 0 1.2em;
+  padding: 0;
 }
 
-.invite-instructions li {
-  @apply text-sm;
+/* Responsive */
+@media (max-width: 900px) {
+  .family-container {
+    padding: 1.2rem 0.5rem 2rem 0.5rem;
+  }
+  .family-content {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
 }
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    min-width: 0;
+  }
+  .family-members-section, .join-family-section {
+    padding: 0.8rem 0.5rem 1rem 0.5rem;
+  }
+  .page-header {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+}
+
+

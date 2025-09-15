@@ -190,8 +190,14 @@ const openModal = (transaction?: any) => {
   } else {
     isEditing.value = false
     editingId.value = null
+    // Ambil type dari URL jika ada, default ke 'expense' jika tidak
+    let urlType = route.query.type
+    let type: 'income' | 'expense' = 'expense';
+    if (urlType === 'income' || urlType === 'expense') {
+      type = urlType;
+    }
     transactionForm.value = {
-      type: 'expense',
+      type,
       amount: 0,
       description: '',
       category_id: '',
@@ -421,6 +427,15 @@ const updateCategoryOptions = () => {
   const relevantCategories = transactionForm.value.type === 'income' 
     ? incomeCategories.value 
     : expenseCategories.value
+
+  console.log('Updating category options:', {
+    transactionType: transactionForm.value.type,
+    totalCategories: categories.value.length,
+    incomeCategories: incomeCategories.value.length,
+    expenseCategories: expenseCategories.value.length,
+    relevantCategories: relevantCategories.length,
+    relevantCategoriesList: relevantCategories.map(cat => ({ id: cat.id, name: cat.name, type: cat.type }))
+  })
 
   categorySelect.innerHTML = '<option value="">Pilih kategori</option>' +
     relevantCategories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('')
