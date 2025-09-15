@@ -1,0 +1,7 @@
+/* Main global styles - moved from src/styles/main.css for production */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f8fafc;
+  margin: 0;
+  padding: 0;
+}
