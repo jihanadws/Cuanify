@@ -1,0 +1,119 @@
+/* Layout Styles */
+.app-layout {
+  @apply flex h-screen bg-gray-50;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  @apply w-64 bg-white shadow-lg flex flex-col;
+}
+
+.sidebar-header {
+  @apply p-6 border-b border-gray-200;
+}
+
+.app-logo {
+  @apply flex items-center space-x-3;
+}
+
+.app-logo .icon-logo {
+  @apply w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white;
+}
+
+.app-name {
+  @apply text-xl font-bold text-gray-900;
+}
+
+.sidebar-menu {
+  @apply flex-1 p-4 space-y-2;
+}
+
+.menu-item {
+  @apply flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors;
+}
+
+.menu-item.active {
+  @apply bg-blue-50 text-blue-700 border-r-2 border-blue-600;
+}
+
+.menu-item i {
+  @apply w-5 h-5;
+}
+
+.sidebar-footer {
+  @apply p-4 border-t border-gray-200;
+}
+
+.user-info {
+  @apply flex items-center space-x-3 mb-4;
+}
+
+.user-avatar {
+  @apply w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center;
+}
+
+.user-details p {
+  @apply text-sm;
+}
+
+.user-name {
+  @apply font-medium text-gray-900;
+}
+
+.user-email {
+  @apply text-gray-600;
+}
+
+.logout-btn {
+  @apply flex items-center space-x-2 w-full px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors;
+}
+
+/* Main Content */
+.main-content {
+  @apply flex-1 overflow-hidden;
+}
+
+.content-wrapper {
+  @apply h-full overflow-y-auto p-6;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex items-center justify-around py-2 z-50;
+  display: none;
+}
+
+.nav-item {
+  @apply flex flex-col items-center space-y-1 py-2 px-3 text-gray-600 hover:text-blue-600 transition-colors;
+}
+
+.nav-item.active {
+  @apply text-blue-600;
+}
+
+.nav-item.add-btn {
+  @apply bg-blue-600 text-white rounded-full p-3 -mt-4;
+}
+
+.nav-item i {
+  @apply w-5 h-5;
+}
+
+.nav-item span {
+  @apply text-xs;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  
+  .bottom-nav {
+    display: flex;
+  }
+  
+  .main-content {
+    @apply pb-20;
+  }
+}

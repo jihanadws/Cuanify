@@ -1,0 +1,83 @@
+<!-- Template untuk halaman manajemen keluarga -->
+<div class="family-container">
+  <div class="page-header">
+    <h1>Kelola Keluarga</h1>
+    <div class="family-code-section">
+      <p>Kode Keluarga: <strong id="family-code">-</strong></p>
+      <button class="btn-secondary copy-code-btn" id="copy-family-code">Salin Kode</button>
+    </div>
+  </div>
+  
+  <div class="family-content">
+    <div class="family-members-section">
+      <div class="section-header">
+        <h2>Anggota Keluarga</h2>
+        <button class="btn-primary" id="invite-member-btn">Undang Anggota</button>
+      </div>
+      
+      <div class="members-list" id="family-members-list">
+        <!-- Family members will be inserted here -->
+      </div>
+    </div>
+    
+    <div class="join-family-section">
+      <h2>Bergabung dengan Keluarga Lain</h2>
+      <p>Masukkan kode keluarga untuk bergabung dengan keluarga yang sudah ada.</p>
+      
+      <form class="join-family-form" id="join-family-form">
+        <div class="form-group">
+          <label for="join-code">Kode Keluarga</label>
+          <input type="text" id="join-code" placeholder="Masukkan kode keluarga (contoh: ABC-123-XYZ)" required>
+        </div>
+        <button type="submit" class="btn-primary">Bergabung</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal untuk undang anggota -->
+<div class="modal" id="invite-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Undang Anggota Keluarga</h2>
+      <button class="modal-close" id="close-invite-modal">&times;</button>
+    </div>
+    
+    <div class="invite-content">
+      <p>Bagikan kode keluarga berikut untuk mengundang anggota baru:</p>
+      
+      <div class="family-code-display">
+        <input type="text" id="invite-family-code" readonly>
+        <button class="btn-secondary" id="copy-invite-code">Salin</button>
+      </div>
+      
+      <div class="share-options">
+        <h3>Atau bagikan melalui:</h3>
+        <div class="share-buttons">
+          <button class="share-btn whatsapp-btn" id="share-whatsapp">
+            <i class="icon-whatsapp"></i>
+            WhatsApp
+          </button>
+          <button class="share-btn email-btn" id="share-email">
+            <i class="icon-email"></i>
+            Email
+          </button>
+          <button class="share-btn copy-btn" id="share-copy">
+            <i class="icon-copy"></i>
+            Salin Link
+          </button>
+        </div>
+      </div>
+      
+      <div class="invite-instructions">
+        <h3>Cara mengundang:</h3>
+        <ol>
+          <li>Salin kode keluarga di atas</li>
+          <li>Bagikan kode tersebut kepada anggota keluarga yang ingin Anda undang</li>
+          <li>Minta mereka untuk mendaftar atau masuk ke aplikasi</li>
+          <li>Lalu masukkan kode keluarga di halaman "Bergabung dengan Keluarga"</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
