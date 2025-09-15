@@ -1,0 +1,27 @@
+{
+  "name": "Family Finance Manager",
+  "short_name": "FamilyFinance",
+  "description": "PWA untuk mengelola keuangan keluarga secara kolaboratif",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-narrow.png", 
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["finance", "productivity"],
+  "lang": "id"
+}
