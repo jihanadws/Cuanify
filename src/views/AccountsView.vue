@@ -135,7 +135,7 @@ const setupModals = () => {
 
   if (accountModal) {
     accountModal.addEventListener('click', (e) => {
-      if (e.target === accountModal) closeAccountModal()
+      if (e.target === accountModal) closeAccountModalFn()
     })
   }
 
@@ -476,12 +476,12 @@ const updateAccountsDisplay = () => {
 
   accountsGrid.innerHTML = accounts.value.map(account => {
     const balance = transactionStore.formatCurrency(Number(account.balance))
-    const typeLabel = {
+    const typeLabel = ({
       cash: 'Tunai',
       bank: 'Bank',
       credit: 'Kredit',
       investment: 'Investasi'
-    }[account.type] || account.type
+    } as Record<string, string>)[account.type] || account.type
 
     return `
       <div class="account-card ${account.type}">
@@ -639,32 +639,61 @@ const clearError = () => {
   </AppLayout>
 </template>
 
+
 <style scoped>
+/* Loading container */
 .loading-container {
-  @apply flex flex-col items-center justify-center h-64 space-y-4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 16rem;
+  gap: 1rem;
 }
-
 .loading-spinner {
-  @apply w-8 h-8 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin;
+  width: 2rem;
+  height: 2rem;
+  border: 4px solid #bfdbfe;
+  border-top: 4px solid #2563eb;
+  border-radius: 9999px;
+  animation: spin 1s linear infinite;
 }
-
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 .error-container {
-  @apply flex items-center justify-center h-64;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16rem;
 }
-
 .error-message {
-  @apply text-center space-y-4 max-w-md mx-auto;
+  text-align: center;
+  gap: 1rem;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .error-message i {
-  @apply w-12 h-12 text-red-500 mx-auto mb-4;
+  width: 3rem;
+  height: 3rem;
+  color: #ef4444;
+  display: block;
+  margin: 0 auto 1rem auto;
 }
-
 .error-message p {
-  @apply text-gray-600;
+  color: #64748b;
 }
-
 .retry-btn {
-  @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors;
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.retry-btn:hover {
+  background: #1d4ed8;
 }
 </style>
