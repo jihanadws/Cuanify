@@ -1,0 +1,56 @@
+/* Authentication Styles */
+.auth-container {
+  @apply min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4;
+}
+
+.auth-card {
+  @apply bg-white rounded-2xl shadow-xl p-8 w-full max-w-md;
+}
+
+.auth-header {
+  @apply text-center mb-8;
+}
+
+.auth-header h1 {
+  @apply text-2xl font-bold text-gray-900 mb-2;
+}
+
+.auth-header p {
+  @apply text-gray-600;
+}
+
+.auth-form {
+  @apply space-y-6;
+}
+
+.form-group {
+  @apply space-y-2;
+}
+
+.form-group label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.form-group input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors;
+}
+
+.form-group input:focus {
+  @apply outline-none;
+}
+
+.btn-primary {
+  @apply w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.auth-footer {
+  @apply text-center mt-6;
+}
+
+.auth-footer p {
+  @apply text-gray-600;
+}
+
+.link {
+  @apply text-blue-600 hover:text-blue-700 font-medium;
+}
