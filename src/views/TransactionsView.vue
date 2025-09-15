@@ -190,8 +190,14 @@ const openModal = (transaction?: any) => {
   } else {
     isEditing.value = false
     editingId.value = null
+    // Ambil type dari URL jika ada, default ke 'expense' jika tidak
+    let urlType = route.query.type
+    let type: 'income' | 'expense' = 'expense';
+    if (urlType === 'income' || urlType === 'expense') {
+      type = urlType;
+    }
     transactionForm.value = {
-      type: 'expense',
+      type,
       amount: 0,
       description: '',
       category_id: '',
