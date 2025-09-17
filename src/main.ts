@@ -6,6 +6,13 @@ import { useTransactionStore } from '@/stores/transaction'
 
 // Import global styles
 import './styles/main.css'
+import './styles/accounts.css'
+import './styles/auth.css'
+import './styles/dashboard.css'
+import './styles/email_confirm.css'
+import './styles/family.css'
+import './styles/layout.css'
+import './styles/transactions.css'
 
 // Create Vue app
 const app = createApp(App)
