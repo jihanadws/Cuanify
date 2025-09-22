@@ -20,7 +20,7 @@ const showPassword = ref(false)
 // Load HTML template
 onMounted(async () => {
   try {
-    const response = await fetch('/src/templates/login.html')
+  const response = await fetch('/login.html')
     template.value = await response.text()
   } catch (error) {
     console.error('Failed to load login template:', error)
@@ -105,7 +105,7 @@ const handleTemplateReady = () => {
 <template>
   <div>
     <!-- Load external CSS -->
-    <link rel="stylesheet" href="/src/styles/auth.css">
+  <!-- CSS sudah diimport di main.ts, tidak perlu <link> manual -->
     
     <!-- Display error if any -->
     <div v-if="authStore.error" class="error-message">

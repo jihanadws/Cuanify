@@ -16,7 +16,7 @@ const sidebarOpen = ref(false)
 // Load HTML template
 onMounted(async () => {
   try {
-    const response = await fetch('/src/templates/layout.html')
+  const response = await fetch('/layout.html')
     template.value = await response.text()
     
     // Initialize after template loads
@@ -353,7 +353,7 @@ defineProps<{
 <template>
   <div>
     <!-- Load external CSS -->
-    <link rel="stylesheet" href="/src/styles/layout.css">
+  <!-- CSS sudah diimport di main.ts, tidak perlu <link> manual -->
     
     <!-- HTML Template -->
     <div v-html="template"></div>
