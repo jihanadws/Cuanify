@@ -44,7 +44,7 @@ const expenseCategories = computed(() => transactionStore.expenseCategories)
 // Load HTML template
 onMounted(async () => {
   try {
-    const response = await fetch('/src/templates/transactions.html')
+  const response = await fetch('/transactions.html')
     template.value = await response.text()
     
     // Initialize after template loads
@@ -493,7 +493,7 @@ watch(() => transactionStore.transactions, () => {
 <template>
   <AppLayout page-title="Transaksi">
     <!-- Load external CSS -->
-    <link rel="stylesheet" href="/src/styles/transactions.css">
+  <!-- CSS sudah diimport di main.ts, tidak perlu <link> manual -->
     
     <!-- Loading state -->
     <div v-if="transactionStore.isLoading" class="loading-container">

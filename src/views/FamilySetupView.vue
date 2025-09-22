@@ -285,7 +285,7 @@ const handleJoinFamily = async (event: Event) => {
 <template>
   <div>
     <!-- Load external CSS -->
-    <link rel="stylesheet" href="/src/styles/auth.css">
+  <!-- CSS sudah diimport di main.ts, tidak perlu <link> manual -->
     
     <!-- Display error if any -->
     <div v-if="error" class="error-message">

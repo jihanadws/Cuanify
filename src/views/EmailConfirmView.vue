@@ -15,7 +15,7 @@ onMounted(async () => {
   // Load the HTML template
   const container = document.getElementById('email-confirm-root')
   if (!container) return
-  const html = await loadTemplate('/src/templates/email_confirm.html')
+  const html = await loadTemplate('/email_confirm.html')
   container.innerHTML = html
 
   // Start with loading state

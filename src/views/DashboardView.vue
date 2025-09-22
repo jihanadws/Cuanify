@@ -14,7 +14,7 @@ const router = useRouter()
 // Load HTML template
 onMounted(async () => {
   try {
-    const response = await fetch('/src/templates/dashboard.html')
+  const response = await fetch('/dashboard.html')
     template.value = await response.text()
     
     // Initialize dashboard after template loads
@@ -163,7 +163,7 @@ const unwatchStats = computed(() => {
 <template>
   <AppLayout page-title="Dashboard">
     <!-- Load external CSS -->
-    <link rel="stylesheet" href="/src/styles/dashboard.css">
+  <!-- CSS sudah diimport di main.ts, tidak perlu <link> manual -->
     
     <!-- Loading state -->
     <div v-if="transactionStore.isLoading" class="loading-container">

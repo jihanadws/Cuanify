@@ -50,7 +50,7 @@ const filteredCategories = computed(() =>
 // Load HTML template
 onMounted(async () => {
   try {
-    const response = await fetch('/src/templates/accounts.html')
+  const response = await fetch('/accounts.html')
     template.value = await response.text()
     
     setTimeout(() => {
@@ -614,7 +614,7 @@ const clearError = () => {
 <template>
   <AppLayout page-title="Akun & Kategori">
     <!-- Load external CSS -->
-    <link rel="stylesheet" href="/src/styles/accounts.css">
+  <!-- CSS sudah diimport di main.ts, tidak perlu <link> manual -->
     
     <!-- Loading state -->
     <div v-if="isLoading" class="loading-container">

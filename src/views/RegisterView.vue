@@ -23,7 +23,7 @@ const showConfirmPassword = ref(false)
 // Load HTML template
 onMounted(async () => {
   try {
-    const response = await fetch('/src/templates/register.html')
+  const response = await fetch('/register.html')
     template.value = await response.text()
   } catch (error) {
     console.error('Failed to load register template:', error)
@@ -132,7 +132,7 @@ const handleTemplateReady = () => {
 <template>
   <div>
     <!-- Load external CSS -->
-    <link rel="stylesheet" href="/src/styles/auth.css">
+  <!-- CSS sudah diimport di main.ts, tidak perlu <link> manual -->
     
     <!-- Display error if any -->
     <div v-if="authStore.error" class="error-message">
