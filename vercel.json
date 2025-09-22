@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!.*\\.(?:css|js|json|ico|png|jpg|svg|webmanifest|txt|woff2?)$).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
